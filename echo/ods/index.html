@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hello Bubble Chart</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <link
+    href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese'
+    rel='stylesheet' type='text/css'>
+
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/d3/d3.min.js"></script>
+  <script src="../bower_components/d3-transform/src/d3-transform.js"></script>
+  <script src="../bower_components/cafej/src/ext-array.js"></script>
+  <script src="../bower_components/cafej/src/misc.js"></script>
+  <script src="../bower_components/cafej/src/micro-observer.js"></script>
+  <script src="../bower_components/microplugin/src/microplugin.js"></script>
+  <script src="../src/bubble-chart.js"></script>
+  <script src="../src/plugins/central-click/central-click.js"></script>
+  <script src="../src/plugins/lines/lines.js"></script>
+  <script src="main_burbujas.js"></script>
+  <style>
+    div {
+      margin: 0%;
+      padding: 0%
+    }
+    .bubbleChart {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .bubbleChart svg {
+      background: #000000;
+    }
+  </style>
+</head>
+
+<body style="background: #000000">
+  <div class="container" style="margin: 0; max-width: 100% !important;">
+    <div class="row">
+      <div class="col-md-6 pull-left">
+        <div id="tooltip"></div><!-- div to hold tooltip. -->
+        <svg width="100%" viewbox="0 0 557.95 692.34" id="statesvg"></svg> <!-- svg to hold the map. -->
+      </div>
+      <div class="col-md-6 pull-right">
+        <div class="bubbleChart"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="comunas.js"></script> <!-- creates uStates. -->
+  <script src="index.js"></script>
+</body>
+
+</html>
