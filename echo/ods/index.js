@@ -112,4 +112,9 @@ fetch('http://165.227.124.98/echo/json_echo/comuna_vs_ods.json')
 		//console.log(sampleData);
 		uStates.draw("#statesvg", sampleData, tooltipHtml);
 		d3.select(self.frameElement).style("height", "600px");
+
+		setTimeout(function () {
+			document.getElementById('nav').style.visibility = "visible";
+			document.getElementById('loading').style.visibility = "hidden";
+		}, 3000);
 	})
