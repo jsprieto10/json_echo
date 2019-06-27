@@ -18,6 +18,25 @@ var ods = {
 	"ods_17": { "name": "Alianzas para lograr los objetivos", "color": "rgb(21, 71, 108)" }
 };
 
+var comunas = {
+	"C1": 1,
+	"C2": 1,
+	"C3": 1,
+	"C4": 1,
+	"C5": 1,
+	"C6": 1,
+	"C7": 1,
+	"C8": 1,
+	"C9": 1,
+	"C10": 1,
+	"C11": 1,
+	"C12": 1,
+	"C13": 1,
+	"C14": 1,
+	"C15": 1,
+	"C16": 1
+}
+
 this.ods = ods;
 
 this.mapaCalor = function (item) {
@@ -26,17 +45,33 @@ this.mapaCalor = function (item) {
 			return res.json();
 		}).then(function (data) {
 			var opcs = [];
+			var mayor = 0;
 			data.forEach(function (dd) {
 				var opc = dd.datos[item.text];
-				opcs.push(opc/item.count);
+				if (opc > mayor) {
+					mayor = opc;
+				}
+			})
+			data.forEach(function (dd) {
+				var opc = dd.datos[item.text];
+				opc = opc/mayor;
+				var min = 0.0625;
+				var plus = 1;
+				while(opc > min){
+					min = min * plus;
+					plus ++;
+				}
+				comunas[dd.id] = min;
 			});
-			return opcs;
+			return comunas;
 		}).then(function (opacidades) {
 			console.log(opacidades);
 			d3.select("#statesvg").selectAll(".state")
 				.style("fill", function (d) {
 					random_value = true;
-					return ods[item.text].color;
+					return opacidades[d.id]>=0.0625*2?ods[item.text].color:"rgb(237,237,237)";
+				}).style('opacity', function(dd){
+					return opacidades[dd.id]>=0.0625*3?opacidades[dd.id]:opacidades[dd.id]+0.0625;
 				});
 		});
 

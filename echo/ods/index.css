@@ -61,3 +61,10 @@ div {
 #tooltip tr td:nth-child(2) {
     text-align: center;
 }
+
+.observablehq--function{
+    visibility: hidden;
+
+} .observablehq--inspect{
+visibility: hidden;
+}
